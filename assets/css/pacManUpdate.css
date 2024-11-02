@@ -1,0 +1,313 @@
+.esconder{
+    display: none;
+    border: 1px solid white;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image:  url('/assets/img/banner-pcm.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.gameInformation{
+    width: 90%;
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0.742);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 6px;
+}
+.userName{
+    color: white;
+    margin: 0;
+    font-size: 18pt;
+    width: 20%;
+    margin-left: 10px;
+}
+.scoreGame{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: start;
+}
+.pontuationGame{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: start;
+}
+.textStandard{
+    width: 100%;
+    font-size: 110%;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+.gameContent{
+    width: 90%;
+    height: 84% ;
+    display: flex !important;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: end;
+    overflow: hidden;
+}
+.helpMe{
+    width: 30%;
+    height: 60%;
+    background-color: #ffffff3d;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50% 50% 0 0;
+    font-weight: bolder;
+}
+.tableMove {
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 2px; 
+    border-spacing: 0;
+    color: rgb(255, 255, 255);
+}
+.leftGame{
+    width: 50%;
+    height: 90%;
+    position: relative;
+    background-color: black;
+    border-radius: 0 0 20px 20px;
+    border: 2px solid white;
+    border-top: black;
+}
+.gameStart{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.titlePresentation{
+    width: 100%;
+    font-size: 36pt;
+    margin: 10px 0 4px;
+    color: white;
+    text-align: center;
+}
+.creatorPresentation{
+    width: 100%;
+    font-size: 14pt;
+    margin: 0;
+    color: white;
+    text-align: center;
+    margin: 10px 0 6px;
+}
+.presentationName{
+    width: 90%;
+    height: 10%;
+    max-height: fit-content;
+    border: 1px solid red;
+    display: none;
+}
+.characterPresentation{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+.gamerBox{
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    color: white;
+    padding-left: 20px;
+    font-size: 22pt;
+    margin: 0;
+}
+.characterBox{
+    width: 90%;
+    height: 12%;
+    display: flex !important;
+    justify-content: start;
+    flex-direction: row;
+    align-items: center;
+}
+.ghostCharacter{
+    height: 100%;
+}
+.nameGhost{
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    font-size: 140%;
+}
+.gameCanvas{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+.canvasScreen{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+}
+.interactiveCanvas{
+    z-index: 1;
+}
+.messagemGameBox{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 24pt;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: gold;
+    border-radius: 20px;
+}
+.messageGame{
+    font-size: 30pt;
+    color: white;
+    margin: 0;
+}
+.lifeGame{
+    width: 100%;
+    height: 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 6px 6px 0 0;
+    justify-content: space-between;
+    background-color: black;
+    position: absolute;
+    border: 2px solid white;
+    border-bottom: 0;
+    transform: translate(-50%, 0);
+    top: -06%;
+    left: 50%;
+    z-index: 2;
+}
+.componnentsLifeGame{
+    /* width: 30%; */
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.componnentsFruitGame{
+    /* width: 60%; */
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.trailerSreen{
+    width: 100%;
+    display: flex !important;
+    height: fit-content;
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+}
+.tableTextLeft{
+    color: #f4c030;
+}
+.tableTextRight{
+    color: rgb(255, 255, 255);
+}
+.autoFalante{
+    display: none;
+    flex-direction: column;
+}
+@media screen and (max-width:600px) {
+    .gameContent{
+        width: 100%;
+        height: 80% ;
+        display: flex !important;
+        justify-content: space-around;
+        flex-direction: row;
+        align-items: center;
+        overflow: hidden;
+    }
+    .leftGame{
+        width: 100%;
+        height: 80%;
+        position: relative;
+        background-color: black;
+    }
+    .helpMe{
+        display: none !important;
+    }
+}
+@media screen and (min-width:601px) {
+    .leftGame{
+        min-width: 500px;
+    }
+}
+@media screen and (min-width:1100px) {
+    .gameContent{
+        width: 100%;
+        height: 80% ;
+        display: flex !important;
+        justify-content: space-around;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .helpMe{
+        display: none !important;
+    }
+    .userName{
+        font-size: 30pt;
+    }
+    .textStandard{
+        font-size: 23pt;
+    }
+    .nameGhost{
+        font-size: 35pt;
+    }
+    .messagemGameBox{
+        font-size: 50pt;
+    }
+    .gamerBox{
+        font-size: 35pt;
+    }
+}
