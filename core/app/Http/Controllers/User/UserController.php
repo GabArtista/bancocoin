@@ -22,11 +22,21 @@ class UserController extends Controller
     {
         $pageTitle = 'Dashboard';
         $user = auth()->user();
+
+        // Carregar todos os referrals com a contagem de indicações e o campo 'mobile'
+        $user->load([
+            'referrals' => function ($query) {
+                $query->select('id', 'firstname', 'username', 'mobile', 'ref_by'); // Adiciona 'mobile'
+            }
+        ]);
+
         $referralBonus = ReferralLog::where('user_id', $user->id)->sum('amount');
 
-        $miners     = Miner::with(['userCoinBalances' => function ($q) {
-            return $q->where('user_id', auth()->id());
-        }])->whereHas('userCoinBalances', function ($q) {
+        $miners = Miner::with([
+            'userCoinBalances' => function ($q) {
+                return $q->where('user_id', auth()->id());
+            }
+        ])->whereHas('userCoinBalances', function ($q) {
             return $q->where('user_id', auth()->id());
         })->get();
 
@@ -44,10 +54,10 @@ class UserController extends Controller
 
     public function show2faForm()
     {
-        $general   = gs();
-        $ga        = new GoogleAuthenticator();
-        $user      = auth()->user();
-        $secret    = $ga->createSecret();
+        $general = gs();
+        $ga = new GoogleAuthenticator();
+        $user = auth()->user();
+        $secret = $ga->createSecret();
         $qrCodeUrl = $ga->getQRCodeGoogleUrl($user->username . '@' . $general->site_name, $secret);
         $pageTitle = '2FA Setting';
         return view($this->activeTemplate . 'user.twofactor', compact('pageTitle', 'secret', 'qrCodeUrl'));
@@ -247,7 +257,7 @@ class UserController extends Controller
     public function wallets()
     {
         $pageTitle = "User Wallets";
-        $userCoinBalances      = UserCoinBalance::where('user_id', auth()->id());
+        $userCoinBalances = UserCoinBalance::where('user_id', auth()->id());
 
         if (request()->coin_code) {
             $userCoinBalances = $userCoinBalances->whereHas('miner', function ($miner) {

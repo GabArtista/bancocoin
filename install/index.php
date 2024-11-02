@@ -8,14 +8,14 @@ function appUrl()
 	$exp = explode('?action', $current);
 	$url = str_replace('index.php', '', $exp[0]);
 	$url = substr($url, 0, -8);
-	return  $url;
+	return $url;
 }
 if ($action == 'requirements') {
 	$passed = [];
 	$failed = [];
 	$requiredPHP = 8.1;
 	$currentPHP = explode('.', PHP_VERSION)[0] . '.' . explode('.', PHP_VERSION)[1];
-	if ($requiredPHP ==  $currentPHP) {
+	if ($requiredPHP == $currentPHP) {
 		$passed[] = 'PHP version 8.1 is required';
 	} else {
 		$failed[] = 'PHP version 8.1 is required. Your current PHP version is ' . $currentPHP;
@@ -81,8 +81,8 @@ if ($action == 'result') {
 			$db = new PDO("mysql:host=$_POST[db_host];dbname=$_POST[db_name]", $_POST['db_user'], $_POST['db_pass']);
 			$dbinfo = $db->query('SELECT VERSION()')->fetchColumn();
 
-			$engine =  @explode('-', $dbinfo)[1];
-			$version =  @explode('.', $dbinfo)[0] . '.' . @explode('.', $dbinfo)[1];
+			$engine = @explode('-', $dbinfo)[1];
+			$version = @explode('.', $dbinfo)[0] . '.' . @explode('.', $dbinfo)[1];
 
 			if (strtolower($engine) == 'mariadb') {
 				if ($version < 10.3) {
@@ -132,7 +132,7 @@ if ($action == 'result') {
 		}
 	}
 }
-$sectionTitle =  empty($action) ? 'Terms of Use' : $action;
+$sectionTitle = empty($action) ? 'Terms of Use' : $action;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -184,7 +184,7 @@ $sectionTitle =  empty($action) ? 'Terms of Use' : $action;
 								}
 								echo '</div>';
 							} elseif ($action == 'information') {
-							?>
+								?>
 								<form action="?action=result" method="post" class="information-form-area mb--20">
 									<div class="info-item">
 										<h5 class="font-weight-normal mb-2">Website URL</h5>
@@ -234,7 +234,7 @@ $sectionTitle =  empty($action) ? 'Terms of Use' : $action;
 										</div>
 									</div>
 								</form>
-							<?php
+								<?php
 							} elseif ($action == 'requirements') {
 								$btnText = 'View Detailed Check Result';
 								if (count($failed)) {
@@ -264,10 +264,13 @@ $sectionTitle =  empty($action) ? 'Terms of Use' : $action;
 								}
 								echo '</div>';
 							} else {
-							?>
+								?>
 								<div class="item">
 									<h4 class="subtitle">License to be used on one(1) domain(website) only!</h4>
-									<p> The Regular license is for one website or domain only. If you want to use it on multiple websites or domains you have to purchase more licenses (1 website = 1 license). The Regular License grants you an ongoing, non-exclusive, worldwide license to make use of the item.</p>
+									<p> The Regular license is for one website or domain only. If you want to use it on
+										multiple websites or domains you have to purchase more licenses (1 website = 1
+										license). The Regular License grants you an ongoing, non-exclusive, worldwide
+										license to make use of the item.</p>
 								</div>
 								<div class="item">
 									<h5 class="subtitle font-weight-bold">You Can:</h5>
@@ -276,23 +279,29 @@ $sectionTitle =  empty($action) ? 'Terms of Use' : $action;
 										<li> Modify or edit as you want. </li>
 										<li> Translate to your choice of language(s).</li>
 									</ul>
-									<span class="text-warning"><i class="fas fa-exclamation-triangle"></i> If any issue or error occurred for your modification on our code/database, we will not be responsible for that. </span>
+									<span class="text-warning"><i class="fas fa-exclamation-triangle"></i> If any issue or
+										error occurred for your modification on our code/database, we will not be
+										responsible for that. </span>
 								</div>
 								<div class="item">
 									<h5 class="subtitle font-weight-bold">You Cannot: </h5>
 									<ul class="check-list">
-										<li class="no"> Resell, distribute, give away, or trade by any means to any third party or individual. </li>
-										<li class="no"> Include this product into other products sold on any market or affiliate websites. </li>
+										<li class="no"> Resell, distribute, give away, or trade by any means to any third
+											party or individual. </li>
+										<li class="no"> Include this product into other products sold on any market or
+											affiliate websites. </li>
 										<li class="no"> Use on more than one(1) domain. </li>
 									</ul>
 								</div>
 								<div class="item">
-									<p class="info">For more information, Please Check <a href="https://codecanyon.net/licenses/faq" target="_blank">The License FAQ</a></p>
+									<p class="info">For more information, Please Check <a
+											href="https://codecanyon.net/licenses/faq" target="_blank">The License FAQ</a>
+									</p>
 								</div>
 								<div class="item text-end">
 									<a href="?action=requirements" class="theme-button choto">I Agree, Next Step</a>
 								</div>
-							<?php
+								<?php
 							}
 							?>
 						</div>
@@ -303,7 +312,8 @@ $sectionTitle =  empty($action) ? 'Terms of Use' : $action;
 	</div>
 	<footer class="py-3 text-center bg--dark border-top border-primary">
 		<div class="container">
-			<p class="m-0 font-weight-bold">&copy;<?php echo Date('Y') ?> - All Right Reserved by <a href="https://viserlab.com/">ViserLab</a></p>
+			<p class="m-0 font-weight-bold">&copy;<?php echo Date('Y') ?> - All Right Reserved by <a
+					href="https://viserlab.com/">ViserLab</a></p>
 		</div>
 	</footer>
 	<script src="../assets/global/js/bootstrap.bundle.min.js"></script>
