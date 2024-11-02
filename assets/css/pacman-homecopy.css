@@ -1,0 +1,97 @@
+#home h1 { 
+
+	text-align: center;
+
+	font-size: 78px;
+
+}
+
+#home h3 { 
+
+	position: absolute;
+
+	margin: auto;
+
+	left: 0px;
+
+	right: 0px;
+
+	bottom: 15px;
+
+	text-align: center;
+
+}
+
+#home h3 em { 
+
+	font-size: inherit;
+
+	font-style: inherit;
+
+	color: #fff200;
+
+}
+
+#canvas-home-title-pacman { 
+
+	background-color: #000;
+
+	position: absolute;
+
+	top: 10px;
+
+	left: 182px;
+
+	height: 100px;
+
+	width: 118px;
+
+}
+
+#canvas-panel-title-pacman { 
+
+	background-color: #000;
+
+	position: absolute;
+
+	top: 6px;
+
+	left: 47px;
+
+	height: 32px;
+
+	width: 38px;
+
+}
+
+#presentation-character-blinky, #presentation-name-blinky { 
+
+	top: 50px;
+
+	color: #ed1b24;
+
+}
+
+#presentation-character-pinky, #presentation-name-pinky { 
+
+	top: 100px;
+
+	color: #feaec9;
+
+}
+
+#presentation-character-inky, #presentation-name-inky { 
+
+	top: 150px;
+
+	color: #4adecb;
+
+}
+
+#presentation-character-clyde, #presentation-name-clyde { 
+
+	top: 200px;
+
+	color: #f99c00;
+
+}
