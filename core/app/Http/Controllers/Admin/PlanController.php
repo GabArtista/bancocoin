@@ -15,7 +15,7 @@ class PlanController extends Controller
     {
         $pageTitle = "Mining Plans";
         $plans = Plan::with('miner');
-
+        
         if (request()->search) {
             $key   = trim(request()->search);
             $plans = $plans->where('title', 'LIKE', "%$key%")
@@ -26,7 +26,6 @@ class PlanController extends Controller
 
         $plans    = $plans->orderBy('id', 'desc')->paginate(getPaginate());
         $miners   = Miner::orderBy('name')->get();
-
         return view('admin.miner.plans', compact('pageTitle', 'plans', 'miners'));
     }
 
@@ -97,6 +96,7 @@ class PlanController extends Controller
         $plan->speed                = $request->speed;
         $plan->speed_unit           = $request->speed_unit;
         $plan->period               = $request->period;
+        $plan->available_miners     = $request->available_miners;
         $plan->period_unit          = $request->period_unit;
         $plan->description          = $request->description;
         $plan->features             = $request->features ?? [];

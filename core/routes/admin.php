@@ -89,7 +89,6 @@ Route::middleware('admin')->group(function () {
         Route::get('mining-plans', 'index')->name('plan.index');
         Route::post('plan/store', 'store')->name('plan.store');
         Route::post('plan/update/{id}', 'update')->name('plan.update');
-
         // Order
         Route::get('mining-tracks', 'orders')->name('order.index');
     });

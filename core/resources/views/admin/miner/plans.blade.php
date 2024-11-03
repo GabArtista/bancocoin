@@ -15,6 +15,7 @@
                                     <th>@lang('Price')</th>
                                     <th>@lang('Speed')</th>
                                     <th>@lang('Period')</th>
+                                    <th>@lang('Available Miners')</th>
                                     <th>@lang('Return /Day')</th>
                                     <th>@lang('Status')</th>
                                     <th>@lang('Action')</th>
@@ -29,6 +30,7 @@
                                         <td> {{ showAmount($plan->price) }} {{ __($general->cur_text) }}</td>
                                         <td> {{ $plan->speed }} {{ $plan->speedUnitText }} </td>
                                         <td> {{ $plan->period }} {{ $plan->periodUnitText }}</td>
+                                        <td> {{ $plan->available_miners }}</td>
                                         <td> {{ $plan->returnPerDay }} {{ $plan->miner->coin_code }} </td>
                                         <td>
                                             @php
@@ -104,12 +106,22 @@
                                 </select>
                             </div>
 
-                            <div class="col-12 return-type-wrapper">
+                            <div class="col-6 return-type-wrapper">
                                 <div class="form-group">
                                     <label>@lang('Return Amount /Day')</label>
                                     <div class="input-group">
                                         <input class="form-control" name="return_per_day" type="number" value="{{ old('return_per_day') }}" step="any" placeholder="@lang('Enter Return Per Day')" required />
                                         <span class="input-group-text rpd_cur_sym">{{ $general->cur_text }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>@lang('Available Miners')</label>
+                                    <div class="input-group">
+                                        <input class="form-control" name="available_miners" type="number" value="{{ old('available_miners') }}" step="any" placeholder="@lang('Enter Available Miners')" required />
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +217,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-12 return-type-wrapper">
+                            <div class="col-6 return-type-wrapper">
                                 <div class="form-group">
                                     <label>@lang('Return Amount /Day')</label>
                                     <div class="input-group">
@@ -214,7 +226,14 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>@lang('Available Miners')</label>
+                                    <div class="input-group">
+                                        <input class="form-control" name="available_miners" type="number" value="{{ old('available_miners') }}" step="any" placeholder="@lang('Enter Available Miners')" required />              
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group col-lg-6">
                                 <label>@lang('Speed')</label>
                                 <div class="input-group">
@@ -306,8 +325,8 @@
                 modal.find('select[name=speed_unit]').val(plan.speed_unit);
 
                 modal.find('input[name=period]').val(plan.period);
+                modal.find('input[name=available_miners]').val(plan.available_miners)
                 modal.find('select[name=period_unit]').val(plan.period_unit);
-
 
                 if (!plan.max_return_per_day) {
                     modal.find('select[name=return_type]').val(1);
