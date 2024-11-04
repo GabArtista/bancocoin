@@ -26,7 +26,7 @@ class UserController extends Controller
         // Carregar todos os referrals com a contagem de indicações e o campo 'mobile'
         $user->load([
             'referrals' => function ($query) {
-                $query->select('id', 'fullname', 'username', 'mobile', 'user_id'); // Adiciona 'mobile'
+                $query->select('id', 'firstname', 'username', 'mobile', 'ref_by'); // Adiciona 'mobile'
             }
         ]);
 
