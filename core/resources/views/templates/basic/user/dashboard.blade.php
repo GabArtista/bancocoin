@@ -32,6 +32,16 @@
     </div>
 @endif
 
+<!-- Botão de Indicação -->
+<div class="row justify-content-center ml-b-30 pb-5">
+    <div class="col-lg-4">
+        <a href="{{ route('user.referral') }}" class="btn cmn-btn w-100 p-3 text-center">
+            <p class="mb-0">💚 PAINEL DE LÍDERES 💚</p>
+            <span class="small">INDIQUE</span>
+        </a>
+    </div>
+</div>
+
 <div class="row justify-content-center ml-b-30">
     <div class="col-lg-4 col-md-6 col-sm-8 mrb-30">
         <div class="dash-item d-flex flex-wrap">
@@ -77,7 +87,8 @@
                 <div class="dash-content">
                     <h3 class="sub-title"><span>{{ $item->coin_code }}</span> @lang('CARTEIRA')</h3>
                     <h4 class="title">{{ showAmount($item->userCoinBalances->balance, 8, exceptZeros: true) }}
-                        {{ $item->coin_code }}</h4>
+                        {{ $item->coin_code }}
+                    </h4>
                 </div>
             </div>
         </div>
