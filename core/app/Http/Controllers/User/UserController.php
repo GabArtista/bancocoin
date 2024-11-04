@@ -26,12 +26,11 @@ class UserController extends Controller
         // Carregar todos os referrals com a contagem de indicações e o campo 'mobile'
         $user->load([
             'referrals' => function ($query) {
-                $query->select('id', 'firstname', 'username', 'mobile', 'ref_by'); // Adiciona 'mobile'
+                $query->select('id', 'fullname', 'username', 'mobile', 'user_id'); // Adiciona 'mobile'
             }
         ]);
 
         $referralBonus = ReferralLog::where('user_id', $user->id)->sum('amount');
-
         $miners = Miner::with([
             'userCoinBalances' => function ($q) {
                 return $q->where('user_id', auth()->id());
@@ -42,8 +41,12 @@ class UserController extends Controller
 
         $transactions = Transaction::where('user_id', $user->id)->orderBy('id', 'desc')->limit(10)->get();
 
-        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'referralBonus', 'miners', 'transactions'));
+        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'referralBonus', 'miners', 'transactions', 'user'));
     }
+
+
+
+
 
     public function paymentHistory(Request $request)
     {
@@ -54,6 +57,10 @@ class UserController extends Controller
 
     public function show2faForm()
     {
+        $general = gs();
+        $ga = new GoogleAuthenticator();
+        $user = auth()->user();
+        $secret = $ga->createSecret();
         $general = gs();
         $ga = new GoogleAuthenticator();
         $user = auth()->user();
@@ -220,6 +227,8 @@ class UserController extends Controller
         return to_route('user.home')->withNotify($notify);
     }
 
+
+
     public function referral()
     {
         $general = gs();
@@ -236,13 +245,15 @@ class UserController extends Controller
             $relations[$label] = (@$relations[$label - 1] ? $relations[$label - 1] . '.allReferrals' : 'allReferrals');
         }
         $user = auth()->user()->load($relations);
-        return view($this->activeTemplate . 'user.referral.index', compact('pageTitle', 'user', 'maxLevel'));
-    }
 
+        // Exemplo de como obter transações do usuário
+        $userTransactions = $user->transactions; // Se você quiser obter todas as transações do usuário
+
+        return view($this->activeTemplate . 'user.referral.index', compact('pageTitle', 'user', 'maxLevel', 'userTransactions'));
+    }
 
     public function referralLog()
     {
-
         if (!gs()->referral_system) {
             $notify[] = ['error', 'Sorry, the referral system is currently unavailable'];
             return back()->withNotify($notify);
@@ -257,6 +268,7 @@ class UserController extends Controller
     public function wallets()
     {
         $pageTitle = "User Wallets";
+        $userCoinBalances = UserCoinBalance::where('user_id', auth()->id());
         $userCoinBalances = UserCoinBalance::where('user_id', auth()->id());
 
         if (request()->coin_code) {
